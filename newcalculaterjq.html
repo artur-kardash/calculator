@@ -24,7 +24,7 @@
         <label style="font-family: 'Open Sans';">Date Of Birth of Your child:</label><br>
         <div id="addchild">
           <span style="font-family: 'Open Sans';">Child 1: </span>
-        <select class="month" required name="month1">
+        <select style="font-family: 'Open Sans';" class="month" required name="month1">
           <option disabled selected value="">Month</option>
           <option value="1">January</option>
           <option value="2">February</option>
@@ -65,16 +65,17 @@
 </div>
 <script type="text/javascript">
   $( document ).ready(function() {
-    var totalres=0;  
+    $("select").prop('required',true);
+  
     var count = 1; 
     var select;
     $('.butchild').click(function(){
-      var styleadd = 'style="margin-top: 5px; margin-right: 4px;"';
+      var styleadd = 'style="margin-top: 5px; margin-right: 4px; font-family: Open Sans;"';
       count++;
       for (var i = 2017; i >= 1993; i--) {
        select+='<option value="'+i+'">'+i+'</option>';   
      }
-     var teg ='<br><span>Child '+count+': </span><select '+styleadd+' required name="month'+count+'">'+
+     var teg ='<div class="delete pstyle"><br><span '+styleadd+'>Child '+count+': </span><select '+styleadd+' required name="month'+count+'">'+
      '<option disabled selected value="">Month</option>'+
      '<option value="1">January</option>'+
      '<option value="2">February</option>'+
@@ -89,23 +90,45 @@
      '<option value="11">November</option>'+
      '<option value="12">December</option>'+
      '</select>'+'<select required name="year'+count+'"><option disabled selected value="">Year</option>'+select+'</select>'
-     +'<span class="delete'+count+'"> delete <span>';
+     +'<span class="deleter"> - <span></div>';
     $("#addchild").append(teg);
     });
 
+    $("#addchild").click(function(event) {
+      if(event.target.className=='deleter'){
+        event.target.parentNode.parentNode.removeChild(event.target.parentNode);      
+      }
+    });
+   
 
-    $('.calc').click(function(){
-      
+    $('.calc').click(function(event){
+      event.preventDefault();
+       var select = form_kids.getElementsByTagName('select');
+        for (var k = 0; k < select.length; k++) {
+                // only validate the inputs that have the required attribute
+                if(select[k].hasAttribute("required")){
+                    if(select[k].value == ""){
+                        // found an empty field that is required
+                        alert("Please fill in all fields");
+                        return false;
+                    }
+                }
+            }
+    // return true;
+      // var q =document.forms["form_kids"]["year1"].value;
+      // console.log(q);
+      // $('form').validate();
+       var totalres=0;
       $('#result1').empty();  
       $('#result2').empty();  
       $('#result3').empty();  
+
 
       var count = 0;
       var form = $("#form_kids").serialize();
       var search = form;
       var strr='{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}';
       var out = JSON.parse(strr);
-      event.preventDefault();
 
       var check = JSON.stringify(out);
       var checkout = check.length;
@@ -124,6 +147,7 @@
       // count++;
     var outKeys = Object.keys(out);
     var sum = 0;
+
       for (let i=1; i <= ( lengthout - 1 ); i++)
       {
         if(i % 2 == 0){
@@ -132,13 +156,9 @@
           sum += +out[outKeys[i]];
         }
 
-        if(i == 2 || i == 4 || i == 6 || i == 8){
+        if(i == 2 || i == 4 || i == 6 || i == 8 || i == 10 || i == 12 || i == 14){
           var outresult = nowAllres - sum;
           sum = 0;
-          // var rez = document.getElementById('result1');
-          // var repeats = document.getElementById('result2');
-          // rez.innerHTML = "";
-          // repeats.innerHTML = " ";
               if(annual == 1){
                   var val00 = 372.38; 
                   var val0 = 60*571.56+60*662.49+36*1234.05+72*2091.39;
@@ -203,34 +223,34 @@
   function calcmorekids(){
 
                   count++;
-                  if(outresult<49){
+                  if(outresult<=60){
                     var res = (60-outresult)*val00+val0;
                     res = (res).toFixed(0);
                     res = new Intl.NumberFormat("en-US").format(res);
-                    // console.log(res);
+                 
                     $("#result2").append('<h3>Costs of Raising Child'+count+': $'+res+'</h3>');
                     res = res.replace(',','');
-                  }else if(outresult>48 && outresult<109){
+                  }else if(outresult>60 && outresult<=120){
                     var res = (120-outresult)*val11+val1;
                     res = (res).toFixed(0);
                     res = new Intl.NumberFormat("en-US").format(res);
                     $("#result2").append('<h3>Costs of Raising Child'+count+': $'+res+'</h3>');
                     res = res.replace(',','');
-                  }else if(outresult>108 && outresult<169){
+                  }else if(outresult>120 && outresult<181){
                     var res = (180-outresult)*val22+val2;
                     res = (res).toFixed(0);
                     res = new Intl.NumberFormat("en-US").format(res);
                     $("#result2").append('<h3>Costs of Raising Child'+count+': $'+res+'</h3>');
 
                     res = res.replace(',',''); 
-                  }else if(outresult>168 && outresult<205){
+                  }else if(outresult>=181 && outresult<=216){
                     var res = (216-outresult)*val33+val3;
                     res = (res).toFixed(0);
                     res = new Intl.NumberFormat("en-US").format(res);
                     $("#result2").append('<h3>Costs of Raising Child'+count+': $'+res+'</h3>');
 
                     res = res.replace(',','');
-                  }else if(outresult>204 && outresult<289){
+                  }else if(outresult>216 && outresult<289){
                     var res = (288-outresult)*val4;
                     res = (res).toFixed(0);
                     res = new Intl.NumberFormat("en-US").format(res);
@@ -242,17 +262,21 @@
                     res=0;
                   }
             
-                   // console.log(totalres);
                   totalres += Number(res);
-                  // console.log(totalres);
                   totalres = new Intl.NumberFormat("en-US").format(totalres);
                     $('#result1').empty();  
                     $("#result1").append('<h2>Total Costs: $'+totalres+'</h2>');
                      totalres = totalres.replace(',','');
+                     totalres = totalres.replace(',','');
+                     totalres = totalres.replace(',','');
                      totalres = Number(totalres);
+                    console.log(res);
+                    console.log(totalres);
                 }
+                
                 $("#result2").append('<br>Expenses from today until your children leave home (at age 24)');
                 $("#result2").append('<br>Call to action - Lorem ipsum dolor sit amet et delectus');
+   $("#result2").append('<center><a href="http://test.com" class="add" style="text-align: center; color:#000;" >www.test.com</a></center><br>');
 
 
 
@@ -263,31 +287,31 @@
     resultMonth = nowAllres-allage;
     console.log(out.month1);
     if(annual == 1){
-        if(resultMonth<49){
+        if(resultMonth<=60){
           var res = (60-resultMonth)*372.38+60*571.56+60*662.49+36*1234.05+72*2091.39;
           res = (res).toFixed(0);
           res = new Intl.NumberFormat("en-US").format(res);
           var result = document.getElementById('result1');
           result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';        
-        }else if(resultMonth>48 && resultMonth<109){
+        }else if(resultMonth>=61 && resultMonth<=120){
           var res = (120-resultMonth)*571.56+60*662.49+36*1234.05+72*2091.39;
           res = (res).toFixed(0);
           res = new Intl.NumberFormat("en-US").format(res);
           var result = document.getElementById('result1');
           result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';  
-        }else if(resultMonth>108 && resultMonth<169){
+        }else if(resultMonth>120 && resultMonth<181){
           var res = (180-resultMonth)*662.49+36*1234.05+72*2091.39;
           res = (res).toFixed(0);
           res = new Intl.NumberFormat("en-US").format(res);
           var result = document.getElementById('result1');
           result.innerHTML = '<h3>Total Costs: $'+res+'</h3><br>';  
-        }else if(resultMonth>168 && resultMonth<205){
+        }else if(resultMonth>180 && resultMonth<=216){
           var res = (216-resultMonth)*1234.05+72*2091.39;
           res = (res).toFixed(0);
           res = new Intl.NumberFormat("en-US").format(res);
           var result = document.getElementById('result1');
           result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';  
-        }else if(resultMonth>204 && resultMonth<289){
+        }else if(resultMonth>=217 && resultMonth<289){
           var res = (288-resultMonth)*2091.39;
           res = (res).toFixed(0);
           res = new Intl.NumberFormat("en-US").format(res);
@@ -299,31 +323,31 @@
         }
 
     }else if(annual == 2){
-       if(resultMonth<49){
+       if(resultMonth<=60){
           var res = (60-resultMonth)*484.96+60*727.44+60*840.02+36*1541.48+72*2554.70;
           res = (res).toFixed(0);
           res = new Intl.NumberFormat("en-US").format(res);
           var result = document.getElementById('result1');
           result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';        
-        }else if(resultMonth>48 && resultMonth<109){
+        }else if(resultMonth>=61 && resultMonth<=120){
           var res = (120-resultMonth)*727.44+60*840.02+36*1541.48+72*2554.70;
           res = (res).toFixed(0);
           res = new Intl.NumberFormat("en-US").format(res);
           var result = document.getElementById('result1');
           result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';  
-        }else if(resultMonth>108 && resultMonth<169){
+        }else if(resultMonth>120 && resultMonth<181){
           var res = (180-resultMonth)*840.02+36*1541.48+72*2554.70;
           res = (res).toFixed(0);
           res = new Intl.NumberFormat("en-US").format(res);
           var result = document.getElementById('result1');
           result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';  
-        }else if(resultMonth>168 && resultMonth<205){
+        }else if(resultMonth>180 && resultMonth<=216){
           var res = (216-resultMonth)*1541.48+72*2554.70;
           res = (res).toFixed(0);
           res = new Intl.NumberFormat("en-US").format(res);
           var result = document.getElementById('result1');
           result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';  
-        }else if(resultMonth>204 && resultMonth<289){
+        }else if(resultMonth>=217 && resultMonth<289){
           var res = (288-resultMonth)*2554.70;
           res = (res).toFixed(0);
           res = new Intl.NumberFormat("en-US").format(res);
@@ -335,31 +359,31 @@
         }
 
     }else if(annual == 3){
-      if(resultMonth<49){
+      if(resultMonth<=60){
           var res = (60-resultMonth)*575.89+60*857.34+60*987.24+36*1792.62+72*2935.74;
           res = (res).toFixed(0);
           res = new Intl.NumberFormat("en-US").format(res);
           var result = document.getElementById('result1');
           result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';        
-        }else if(resultMonth>48 && resultMonth<109){
+        }else if(resultMonth>=61 && resultMonth<=120){
           var res = (120-resultMonth)*857.34+60*987.24+36*1792.62+72*2935.74;
           res = (res).toFixed(0);
           res = new Intl.NumberFormat("en-US").format(res);
           var result = document.getElementById('result1');
           result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';  
-        }else if(resultMonth>108 && resultMonth<169){
+        }else if(resultMonth>120 && resultMonth<181){
           var res = (180-resultMonth)*987.24+36*1792.62+72*2935.74;
           res = (res).toFixed(0);
           res = new Intl.NumberFormat("en-US").format(res);
           var result = document.getElementById('result1');
           result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';  
-        }else if(resultMonth>168 && resultMonth<205){
+        }else if(resultMonth>180 && resultMonth<=216){
           var res = (216-resultMonth)*1792.62+72*2935.74;
           res = (res).toFixed(0);
           res = new Intl.NumberFormat("en-US").format(res);
           var result = document.getElementById('result1');
           result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';  
-        }else if(resultMonth>204 && resultMonth<289){
+        }else if(resultMonth>=217 && resultMonth<289){
           var res = (288-resultMonth)*2935.74;
           res = (res).toFixed(0);
           res = new Intl.NumberFormat("en-US").format(res);
@@ -371,31 +395,31 @@
         }
 
     }else if(annual == 4){
-      if(resultMonth<49){
+      if(resultMonth<=60){
           var res = (60-resultMonth)*684.14+60*1004.56+60*1156.11+36*2074.07+72*3360.08;
           res = (res).toFixed(0);
           res = new Intl.NumberFormat("en-US").format(res);
           var result = document.getElementById('result1');
           result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';        
-        }else if(resultMonth>48 && resultMonth<109){
+        }else if(resultMonth>=61 && resultMonth<=120){
           var res = (120-resultMonth)*1004.56+60*1156.11+36*2074.07+72*3360.08;
           res = (res).toFixed(0);
           res = new Intl.NumberFormat("en-US").format(res);
           var result = document.getElementById('result1');
           result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';  
-        }else if(resultMonth>108 && resultMonth<169){
+        }else if(resultMonth>120 && resultMonth<181){
           var res = (180-resultMonth)*1156.11+36*2074.07+72*3360.08;
           res = (res).toFixed(0);
           res = new Intl.NumberFormat("en-US").format(res);
           var result = document.getElementById('result1');
           result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';  
-        }else if(resultMonth>168 && resultMonth<205){
+        }else if(resultMonth>180 && resultMonth<=216){
           var res = (216-resultMonth)*2074.07+72*3360.08;
           res = (res).toFixed(0);
           res = new Intl.NumberFormat("en-US").format(res);
           var result = document.getElementById('result1');
           result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';  
-        }else if(resultMonth>204 && resultMonth<289){
+        }else if(resultMonth>=217 && resultMonth<289){
           var res = (288-resultMonth)*3360.08;
           res = (res).toFixed(0);
           res = new Intl.NumberFormat("en-US").format(res);
@@ -407,31 +431,31 @@
         }
 
     }else{
-      if(resultMonth<49){
+      if(resultMonth<=60){
           var res = (60-resultMonth)*1000.23+60*1433.23+60*1645.40+36*2892.44+72*4585.47;
           res = (res).toFixed(0);
           res = new Intl.NumberFormat("en-US").format(res);
           var result = document.getElementById('result1');
           result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';        
-        }else if(resultMonth>48 && resultMonth<109){
+        }else if(resultMonth>=61 && resultMonth<=120){
           var res = (120-resultMonth)*1433.23+60*1645.40+36*2892.44+72*4585.47;
           res = (res).toFixed(0);
           res = new Intl.NumberFormat("en-US").format(res);
           var result = document.getElementById('result1');
           result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';  
-        }else if(resultMonth>108 && resultMonth<169){
+        }else if(resultMonth>120 && resultMonth<181){
           var res = (180-resultMonth)*1645.40+36*2892.44+72*4585.47;
           res = (res).toFixed(0);
           res = new Intl.NumberFormat("en-US").format(res);
           var result = document.getElementById('result1');
           result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';  
-        }else if(resultMonth>168 && resultMonth<205){
+        }else if(resultMonth>180 && resultMonth<=216){
           var res = (216-resultMonth)*2892.44+72*4585.47;
           res = (res).toFixed(0);
           res = new Intl.NumberFormat("en-US").format(res);
           var result = document.getElementById('result1');
           result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';  
-        }else if(resultMonth>204 && resultMonth<289){
+        }else if(resultMonth>=217 && resultMonth<289){
           var res = (288-resultMonth)*4585.47;
           res = (res).toFixed(0);
           res = new Intl.NumberFormat("en-US").format(res);
@@ -444,12 +468,12 @@
     }
     result.innerHTML += '<br>Expenses from today until your children leave home (at age 24)';
     result.innerHTML += '<br>Call to action - Lorem ipsum dolor sit amet et delectus';
+   result.innerHTML += '<center><a href="http://test.com" class="add" style="text-align: center; color:#000;" >www.test.com</a></center><br>';
 
     }
 
 
 })
-
 
 
   });
@@ -487,6 +511,7 @@
   }
 
   #result2{
+    margin-top: -20px;
     text-align: center;
   }
 
@@ -520,20 +545,33 @@
     margin-top: 5px;
   }
   .delete{
+    margin-top: -10px;
     cursor: pointer;
   }
   .calc{
+      margin-bottom: 5px;
       font-size: 20px;
   }
   h2{
     font-family: "Open Sans";
   }
   h3{
+    margin-bottom: 5px;
+    margin-top: 5px;
     font-family: "Open Sans";
   }
   a{
     font-family: "Open Sans"
   }
+
+  .delstyle{
+    cursor: pointer;
+  }
+  *{
+    font-family: "Open Sans";
+  }
+
+
 
 
 </style>
