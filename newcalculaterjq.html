@@ -2,10 +2,12 @@
 <html>
 <head>
  <meta charset="utf-8">
- <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+ <script src="http://code.jquery.com/jquery-1.8.3.js"></script> <!-- this link needed -->
  <title>Raising Kids Calculator</title>
 </head>
 <body>
+
+<!-- begin of calculator -->
 
   <div class="kids-content">
     <h2 style="text-align: center;">Raising Kids Calculator</h2>
@@ -42,18 +44,15 @@
           <select class="year" required name="year1">
             <option disabled selected value="">Year</option>
             <script type="text/javascript">
-             for (var i = 2017; i >= 1993; i--) {
+            for (var i = 2017; i >= 1993; i--) {
               document.write('<option value="'+i+'">'+i+'</option>');   
             }
           </script>
         </select>
        
-        <!-- <input type="number" required placeholder="Year" name="year"> -->
-        <!-- <input placeholder="Month" type="number" required name="month"><br> -->
       </div>
       <center><button class="butchild" type="button"><a class="addchild">+ Add another child</a></button></center>
       <input class="sub calc" type="submit"  value="Calculate" />
-      <!-- <input type="submit" class="calc" value="Calc"> -->
     </form>
   </div>
   <h3 style="text-align: center;"></h3> <!-- any text -->
@@ -62,426 +61,18 @@
   <div id="result1"></div>
   <div id="result2"></div>
   <div id="result3"></div>
+  <div id="result4">
+  <center><br>Expenses from today until your children leave home (at age 24)</center>
+  <center><br>Call to action - Lorem ipsum dolor sit amet et delectus</center>
+  <center><a href="http://test.com" class="add" style="text-align: center; color:#000;" >www.test.com</a></center><br>
+
+
+  </div>
 </div>
 <script type="text/javascript">
-  $( document ).ready(function() {
-    $("select").prop('required',true);
-  
-    var count = 1; 
-    var select;
-    $('.butchild').click(function(){
-      var styleadd = 'style="margin-top: 5px; margin-right: 4px; font-family: Open Sans;"';
-      count++;
-      for (var i = 2017; i >= 1993; i--) {
-       select+='<option value="'+i+'">'+i+'</option>';   
-     }
-     var teg ='<div class="delete pstyle"><br><span '+styleadd+'>Child '+count+': </span><select '+styleadd+' required name="month'+count+'">'+
-     '<option disabled selected value="">Month</option>'+
-     '<option value="1">January</option>'+
-     '<option value="2">February</option>'+
-     '<option value="3">March</option>'+
-     '<option value="4">April</option>'+
-     '<option value="5">May</option>'+
-     '<option value="6">June</option>'+
-     '<option value="7">July</option>'+
-     '<option value="8">August</option>'+
-     '<option value="9">September</option>'+
-     '<option value="10">October</option>'+
-     '<option value="11">November</option>'+
-     '<option value="12">December</option>'+
-     '</select>'+'<select required name="year'+count+'"><option disabled selected value="">Year</option>'+select+'</select>'
-     +'<span class="deleter"> - <span></div>';
-    $("#addchild").append(teg);
-    });
-
-    $("#addchild").click(function(event) {
-      if(event.target.className=='deleter'){
-        event.target.parentNode.parentNode.removeChild(event.target.parentNode);      
-      }
-    });
-   
-
-    $('.calc').click(function(event){
-      event.preventDefault();
-       var select = form_kids.getElementsByTagName('select');
-        for (var k = 0; k < select.length; k++) {
-                // only validate the inputs that have the required attribute
-                if(select[k].hasAttribute("required")){
-                    if(select[k].value == ""){
-                        // found an empty field that is required
-                        alert("Please fill in all fields");
-                        return false;
-                    }
-                }
-            }
-    // return true;
-      // var q =document.forms["form_kids"]["year1"].value;
-      // console.log(q);
-      // $('form').validate();
-       var totalres=0;
-      $('#result1').empty();  
-      $('#result2').empty();  
-      $('#result3').empty();  
-
-
-      var count = 0;
-      var form = $("#form_kids").serialize();
-      var search = form;
-      var strr='{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}';
-      var out = JSON.parse(strr);
-
-      var check = JSON.stringify(out);
-      var checkout = check.length;
-      // console.log(out);
-   // console.log(Array.prototype.indexOf(out)); 
-     var lengthout = Object.keys(out).length;
-     var annual = out.annual;
-     var now = new Date();
-     nowYear = now.getFullYear();
-     nowMonth = now.getMonth();
-     nowMonth = nowMonth+1;
-
-    var nowAllres = nowYear*12+nowMonth; //--сегодняшняя дата в месяцах
-    
-    if(checkout > 43){
-      // count++;
-    var outKeys = Object.keys(out);
-    var sum = 0;
-
-      for (let i=1; i <= ( lengthout - 1 ); i++)
-      {
-        if(i % 2 == 0){
-          sum += +out[outKeys[i]] * 12;
-        } else {
-          sum += +out[outKeys[i]];
-        }
-
-        if(i == 2 || i == 4 || i == 6 || i == 8 || i == 10 || i == 12 || i == 14){
-          var outresult = nowAllres - sum;
-          sum = 0;
-              if(annual == 1){
-                  var val00 = 372.38; 
-                  var val0 = 60*571.56+60*662.49+36*1234.05+72*2091.39;
-                  var val11 = 571.56; 
-                  var val1 = 60*662.49+36*1234.05+72*2091.39;
-                  var val22 = 662.49;
-                  var val2 = 36*1234.05+72*2091.39;
-                  var val33 = 1234.05;
-                  var val3 = 72*2091.39;
-                  var val4 = 2091.39;
-                  calcmorekids();
-                }else if(annual == 2){
-                  var val00 = 484.96; 
-                  var val0 = 60*727.44+60*840.02+36*1541.48+72*2554.70;
-                  var val11 = 727.44;
-                  var val1 = 60*840.02+36*1541.48+72*2554.70;
-                  var val22 = 840.02;
-                  var val2 = 36*1541.48+72*2554.70;
-                  var val33 = 1541.48; 
-                  var val3 = 72*2554.70;
-                  var val4 = 2554.70;
-                  calcmorekids();
-
-                }else if(annual == 3){
-                  var val00 = 575.89;
-                  var val0 = 60*857.34+60*987.24+36*1792.62+72*2935.74;
-                  var val11 = 857.34;
-                  var val1 = 60*987.24+36*1792.62+72*2935.74;
-                  var val22 = 987.24;
-                  var val2 = 36*1792.62+72*2935.74;
-                  var val33 = 1792.62;
-                  var val3 = 72*2935.74;
-                  var val4 = 2935.74;
-                  calcmorekids();
-                }else if(annual == 4){
-                  var val00 = 684.14;
-                  var val0 = 60*1004.56+60*1156.11+36*2074.07+72*3360.08;
-                  var val11 = 1004.56;
-                  var val1 = 60*1156.11+36*2074.07+72*3360.08;
-                  var val22 = 1156.11;
-                  var val2 = 36*2074.07+72*3360.08;
-                  var val33 = 2074.07;
-                  var val3 = 72*3360.08;
-                  var val4 = 3360.08;
-                  calcmorekids();
-                }else{
-                  var val00 = 1000.23;
-                  var val0 = 60*1433.23+60*1645.40+36*2892.44+72*4585.47;
-                  var val11 = 1433.23;
-                  var val1 = 60*1645.40+36*2892.44+72*4585.47;
-                  var val22 = 1645.40;
-                  var val2 = 36*2892.44+72*4585.47;
-                  var val33 = 2892.44;
-                  var val3 = 72*4585.47;
-                  var val4 = 4585.47;
-                  calcmorekids();
-                }
-
-          }
-
-      }
-  function calcmorekids(){
-
-                  count++;
-                  if(outresult<=60){
-                    var res = (60-outresult)*val00+val0;
-                    res = (res).toFixed(0);
-                    res = new Intl.NumberFormat("en-US").format(res);
-                 
-                    $("#result2").append('<h3>Costs of Raising Child'+count+': $'+res+'</h3>');
-                    res = res.replace(',','');
-                  }else if(outresult>60 && outresult<=120){
-                    var res = (120-outresult)*val11+val1;
-                    res = (res).toFixed(0);
-                    res = new Intl.NumberFormat("en-US").format(res);
-                    $("#result2").append('<h3>Costs of Raising Child'+count+': $'+res+'</h3>');
-                    res = res.replace(',','');
-                  }else if(outresult>120 && outresult<181){
-                    var res = (180-outresult)*val22+val2;
-                    res = (res).toFixed(0);
-                    res = new Intl.NumberFormat("en-US").format(res);
-                    $("#result2").append('<h3>Costs of Raising Child'+count+': $'+res+'</h3>');
-
-                    res = res.replace(',',''); 
-                  }else if(outresult>=181 && outresult<=216){
-                    var res = (216-outresult)*val33+val3;
-                    res = (res).toFixed(0);
-                    res = new Intl.NumberFormat("en-US").format(res);
-                    $("#result2").append('<h3>Costs of Raising Child'+count+': $'+res+'</h3>');
-
-                    res = res.replace(',','');
-                  }else if(outresult>216 && outresult<289){
-                    var res = (288-outresult)*val4;
-                    res = (res).toFixed(0);
-                    res = new Intl.NumberFormat("en-US").format(res);
-                    $("#result2").append('<h3>Costs of Raising Child'+count+': $'+res+'</h3>');
-                    
-                    res = res.replace(',','');
-                  }else{
-                    $("#result2").append('<h3>Your Child Is Too Old To Rely On You</h3>');
-                    res=0;
-                  }
-            
-                  totalres += Number(res);
-                  totalres = new Intl.NumberFormat("en-US").format(totalres);
-                    $('#result1').empty();  
-                    $("#result1").append('<h2>Total Costs: $'+totalres+'</h2>');
-                     totalres = totalres.replace(',','');
-                     totalres = totalres.replace(',','');
-                     totalres = totalres.replace(',','');
-                     totalres = Number(totalres);
-                    console.log(res);
-                    console.log(totalres);
-                }
-                
-                $("#result2").append('<br>Expenses from today until your children leave home (at age 24)');
-                $("#result2").append('<br>Call to action - Lorem ipsum dolor sit amet et delectus');
-   $("#result2").append('<center><a href="http://test.com" class="add" style="text-align: center; color:#000;" >www.test.com</a></center><br>');
-
-
-
-    }else{
-
-    var yearinmonth = out.year1*12; //----- годы в месяцы одного ребенка
-    var allage = +yearinmonth + +out.month1; // -----возраст в месяцах одного ребенка
-    resultMonth = nowAllres-allage;
-    console.log(out.month1);
-    if(annual == 1){
-        if(resultMonth<=60){
-          var res = (60-resultMonth)*372.38+60*571.56+60*662.49+36*1234.05+72*2091.39;
-          res = (res).toFixed(0);
-          res = new Intl.NumberFormat("en-US").format(res);
-          var result = document.getElementById('result1');
-          result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';        
-        }else if(resultMonth>=61 && resultMonth<=120){
-          var res = (120-resultMonth)*571.56+60*662.49+36*1234.05+72*2091.39;
-          res = (res).toFixed(0);
-          res = new Intl.NumberFormat("en-US").format(res);
-          var result = document.getElementById('result1');
-          result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';  
-        }else if(resultMonth>120 && resultMonth<181){
-          var res = (180-resultMonth)*662.49+36*1234.05+72*2091.39;
-          res = (res).toFixed(0);
-          res = new Intl.NumberFormat("en-US").format(res);
-          var result = document.getElementById('result1');
-          result.innerHTML = '<h3>Total Costs: $'+res+'</h3><br>';  
-        }else if(resultMonth>180 && resultMonth<=216){
-          var res = (216-resultMonth)*1234.05+72*2091.39;
-          res = (res).toFixed(0);
-          res = new Intl.NumberFormat("en-US").format(res);
-          var result = document.getElementById('result1');
-          result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';  
-        }else if(resultMonth>=217 && resultMonth<289){
-          var res = (288-resultMonth)*2091.39;
-          res = (res).toFixed(0);
-          res = new Intl.NumberFormat("en-US").format(res);
-          var result = document.getElementById('result1');
-          result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';  
-        }else{
-          var result = document.getElementById('result1');
-          result.innerHTML = '<h2>Your Child Is Too Old To Rely On You</h2>';  
-        }
-
-    }else if(annual == 2){
-       if(resultMonth<=60){
-          var res = (60-resultMonth)*484.96+60*727.44+60*840.02+36*1541.48+72*2554.70;
-          res = (res).toFixed(0);
-          res = new Intl.NumberFormat("en-US").format(res);
-          var result = document.getElementById('result1');
-          result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';        
-        }else if(resultMonth>=61 && resultMonth<=120){
-          var res = (120-resultMonth)*727.44+60*840.02+36*1541.48+72*2554.70;
-          res = (res).toFixed(0);
-          res = new Intl.NumberFormat("en-US").format(res);
-          var result = document.getElementById('result1');
-          result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';  
-        }else if(resultMonth>120 && resultMonth<181){
-          var res = (180-resultMonth)*840.02+36*1541.48+72*2554.70;
-          res = (res).toFixed(0);
-          res = new Intl.NumberFormat("en-US").format(res);
-          var result = document.getElementById('result1');
-          result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';  
-        }else if(resultMonth>180 && resultMonth<=216){
-          var res = (216-resultMonth)*1541.48+72*2554.70;
-          res = (res).toFixed(0);
-          res = new Intl.NumberFormat("en-US").format(res);
-          var result = document.getElementById('result1');
-          result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';  
-        }else if(resultMonth>=217 && resultMonth<289){
-          var res = (288-resultMonth)*2554.70;
-          res = (res).toFixed(0);
-          res = new Intl.NumberFormat("en-US").format(res);
-          var result = document.getElementById('result1');
-          result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';  
-        }else{
-          var result = document.getElementById('result1');
-          result.innerHTML = '<h2>Your Child Is Too Old To Rely On You</h2>';  
-        }
-
-    }else if(annual == 3){
-      if(resultMonth<=60){
-          var res = (60-resultMonth)*575.89+60*857.34+60*987.24+36*1792.62+72*2935.74;
-          res = (res).toFixed(0);
-          res = new Intl.NumberFormat("en-US").format(res);
-          var result = document.getElementById('result1');
-          result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';        
-        }else if(resultMonth>=61 && resultMonth<=120){
-          var res = (120-resultMonth)*857.34+60*987.24+36*1792.62+72*2935.74;
-          res = (res).toFixed(0);
-          res = new Intl.NumberFormat("en-US").format(res);
-          var result = document.getElementById('result1');
-          result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';  
-        }else if(resultMonth>120 && resultMonth<181){
-          var res = (180-resultMonth)*987.24+36*1792.62+72*2935.74;
-          res = (res).toFixed(0);
-          res = new Intl.NumberFormat("en-US").format(res);
-          var result = document.getElementById('result1');
-          result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';  
-        }else if(resultMonth>180 && resultMonth<=216){
-          var res = (216-resultMonth)*1792.62+72*2935.74;
-          res = (res).toFixed(0);
-          res = new Intl.NumberFormat("en-US").format(res);
-          var result = document.getElementById('result1');
-          result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';  
-        }else if(resultMonth>=217 && resultMonth<289){
-          var res = (288-resultMonth)*2935.74;
-          res = (res).toFixed(0);
-          res = new Intl.NumberFormat("en-US").format(res);
-          var result = document.getElementById('result1');
-          result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';  
-        }else{
-          var result = document.getElementById('result1');
-          result.innerHTML = '<h2>Your Child Is Too Old To Rely On You</h2>';  
-        }
-
-    }else if(annual == 4){
-      if(resultMonth<=60){
-          var res = (60-resultMonth)*684.14+60*1004.56+60*1156.11+36*2074.07+72*3360.08;
-          res = (res).toFixed(0);
-          res = new Intl.NumberFormat("en-US").format(res);
-          var result = document.getElementById('result1');
-          result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';        
-        }else if(resultMonth>=61 && resultMonth<=120){
-          var res = (120-resultMonth)*1004.56+60*1156.11+36*2074.07+72*3360.08;
-          res = (res).toFixed(0);
-          res = new Intl.NumberFormat("en-US").format(res);
-          var result = document.getElementById('result1');
-          result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';  
-        }else if(resultMonth>120 && resultMonth<181){
-          var res = (180-resultMonth)*1156.11+36*2074.07+72*3360.08;
-          res = (res).toFixed(0);
-          res = new Intl.NumberFormat("en-US").format(res);
-          var result = document.getElementById('result1');
-          result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';  
-        }else if(resultMonth>180 && resultMonth<=216){
-          var res = (216-resultMonth)*2074.07+72*3360.08;
-          res = (res).toFixed(0);
-          res = new Intl.NumberFormat("en-US").format(res);
-          var result = document.getElementById('result1');
-          result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';  
-        }else if(resultMonth>=217 && resultMonth<289){
-          var res = (288-resultMonth)*3360.08;
-          res = (res).toFixed(0);
-          res = new Intl.NumberFormat("en-US").format(res);
-          var result = document.getElementById('result1');
-          result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';  
-        }else{
-          var result = document.getElementById('result1');
-          result.innerHTML = '<h2>Your Child Is Too Old To Rely On You</h2>';  
-        }
-
-    }else{
-      if(resultMonth<=60){
-          var res = (60-resultMonth)*1000.23+60*1433.23+60*1645.40+36*2892.44+72*4585.47;
-          res = (res).toFixed(0);
-          res = new Intl.NumberFormat("en-US").format(res);
-          var result = document.getElementById('result1');
-          result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';        
-        }else if(resultMonth>=61 && resultMonth<=120){
-          var res = (120-resultMonth)*1433.23+60*1645.40+36*2892.44+72*4585.47;
-          res = (res).toFixed(0);
-          res = new Intl.NumberFormat("en-US").format(res);
-          var result = document.getElementById('result1');
-          result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';  
-        }else if(resultMonth>120 && resultMonth<181){
-          var res = (180-resultMonth)*1645.40+36*2892.44+72*4585.47;
-          res = (res).toFixed(0);
-          res = new Intl.NumberFormat("en-US").format(res);
-          var result = document.getElementById('result1');
-          result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';  
-        }else if(resultMonth>180 && resultMonth<=216){
-          var res = (216-resultMonth)*2892.44+72*4585.47;
-          res = (res).toFixed(0);
-          res = new Intl.NumberFormat("en-US").format(res);
-          var result = document.getElementById('result1');
-          result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';  
-        }else if(resultMonth>=217 && resultMonth<289){
-          var res = (288-resultMonth)*4585.47;
-          res = (res).toFixed(0);
-          res = new Intl.NumberFormat("en-US").format(res);
-          var result = document.getElementById('result1');
-          result.innerHTML = '<h2>Total Costs: $'+res+'</h2><br>';  
-        }else{
-          var result = document.getElementById('result1');
-          result.innerHTML = '<h2>Your Child Is Too Old To Rely On You</h2>';  
-        }
-    }
-    result.innerHTML += '<br>Expenses from today until your children leave home (at age 24)';
-    result.innerHTML += '<br>Call to action - Lorem ipsum dolor sit amet et delectus';
-   result.innerHTML += '<center><a href="http://test.com" class="add" style="text-align: center; color:#000;" >www.test.com</a></center><br>';
-
-    }
-
-
-})
-
-
-  });
+ eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--){d[e(c)]=k[c]||e(c)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('$(q).2X(1I(){$("H").2S(\'1P\',30);b I=1;b H;$(\'.2L\').26(1I(){b 22=\'2N="2y-2P: 3j; 2y-3b: 37; 3d-2O: 2R 2W;"\';I++;25(b i=2U;i>=2V;i--){H+=\'<x D="\'+i+\'">\'+i+\'</x>\'}b 2j=\'<2g 2m="3k 2T"><A><1O \'+22+\'>K \'+I+\': </1O><H \'+22+\' 1P 2q="32\'+I+\'">\'+\'<x 2r 2s D="">3c</x>\'+\'<x D="1">3h</x>\'+\'<x D="2">3a</x>\'+\'<x D="3">33</x>\'+\'<x D="4">35</x>\'+\'<x D="5">3e</x>\'+\'<x D="6">3l</x>\'+\'<x D="7">3i</x>\'+\'<x D="8">3f</x>\'+\'<x D="9">3g</x>\'+\'<x D="10">31</x>\'+\'<x D="11">3m</x>\'+\'<x D="12">2Y</x>\'+\'</H>\'+\'<H 1P 2q="2Q\'+I+\'"><x 2r 2s D="">2M</x>\'+H+\'</H>\'+\'<1O 2m="2k"> - <1O></2g>\';$("#2l").S(2j)});$("#2l").26(1I(1q){f(1q.27.2Z==\'2k\'){1q.27.21.21.3o(1q.27.21);I--}});$(\'.3I\').26(1I(1q){1q.3F();b H=2o.3G(\'H\');25(b k=0;k<H.1X;k++){f(H[k].3D("1P")){f(H[k].D==""){3E("3H 3J 3L 3K 3n");3B 3s}}}b G=0;$(\'#m\').1R();$(\'#Y\').1R();$(\'#3t\').1R();b I=0;b 2p=$("#2o").3r();b 2t=2p;b 28=\'{"\'+3q(2t).M(/"/g,\'\\\\"\').M(/&/g,\'","\').M(/=/g,\'":"\')+\'"}\';b Z=2a.3C(28);b 29=2a.3p(Z);b 2b=29.1X;b 2c=2u.2d(Z).1X;b O=Z.O;b 1Z=n 3u();2e=1Z.3v();1Q=1Z.3A();1Q=1Q+1;b 20=2e*12+1Q;f(2b>3z){b 1Y=2u.2d(Z);b 1K=0;25(3y i=1;i<=(2c-1);i++){f(i%2==0){1K+=+Z[1Y[i]]*12}j{1K+=+Z[1Y[i]]}f(i==2||i==4||i==6||i==8||i==10||i==12||i==14){b E=20-1K;f(E<0){$("#Y").S(\'<C>17 2F 2E 2C 2D 2f</C>\')}j{1K=0;f(O==1){b 1A=2G.38;b 1z=h*1V.1e+h*1r.1s+36*18.15+l*W.39;b 1x=1V.1e;b 1D=h*1r.1s+36*18.15+l*W.39;b 1F=1r.1s;b 1E=36*18.15+l*W.39;b 1G=18.15;b 1H=l*W.39;b 1g=W.39;1B()}j f(O==2){b 1A=2I.2x;b 1z=h*1S.J+h*1j.1k+36*19.1b+l*X.T;b 1x=1S.J;b 1D=h*1j.1k+36*19.1b+l*X.T;b 1F=1j.1k;b 1E=36*19.1b+l*X.T;b 1G=19.1b;b 1H=l*X.T;b 1g=X.T;1B()}j f(O==3){b 1A=2z.2H;b 1z=h*1W.34+h*1C.24+36*1a.1d+l*N.R;b 1x=1W.34;b 1D=h*1C.24+36*1a.1d+l*N.R;b 1F=1C.24;b 1E=36*1a.1d+l*N.R;b 1G=1a.1d;b 1H=l*N.R;b 1g=N.R;1B()}j f(O==4){b 1A=2K.14;b 1z=h*1T.1e+h*1l.11+36*16.13+l*P.Q;b 1x=1T.1e;b 1D=h*1l.11+36*16.13+l*P.Q;b 1F=1l.11;b 1E=36*16.13+l*P.Q;b 1G=16.13;b 1H=l*P.Q;b 1g=P.Q;1B()}j{b 1A=2J.23;b 1z=h*1U.23+h*1y.1v+36*1c.J+l*U.V;b 1x=1U.23;b 1D=h*1y.1v+36*1c.J+l*U.V;b 1F=1y.1v;b 1E=36*1c.J+l*U.V;b 1G=1c.J;b 1H=l*U.V;b 1g=U.V;1B()}}}}1I 1B(){I++;f(E<=h){b a=(h-E)*1A+1z;a=(a).v(0);a=n u.p("o-r").s(a);$("#Y").S(\'<C>t 1J 1M K\'+I+\': $\'+a+\'</C>\');a=a.M(\',\',\'\')}j f(E>h&&E<=B){b a=(B-E)*1x+1D;a=(a).v(0);a=n u.p("o-r").s(a);$("#Y").S(\'<C>t 1J 1M K\'+I+\': $\'+a+\'</C>\');a=a.M(\',\',\'\')}j f(E>B&&E<1f){b a=(L-E)*1F+1E;a=(a).v(0);a=n u.p("o-r").s(a);$("#Y").S(\'<C>t 1J 1M K\'+I+\': $\'+a+\'</C>\');a=a.M(\',\',\'\')}j f(E>=1f&&E<=F){b a=(F-E)*1G+1H;a=(a).v(0);a=n u.p("o-r").s(a);$("#Y").S(\'<C>t 1J 1M K\'+I+\': $\'+a+\'</C>\');a=a.M(\',\',\'\')}j f(E>F&&E<1w){b a=(1m-E)*1g;a=(a).v(0);a=n u.p("o-r").s(a);$("#Y").S(\'<C>t 1J 1M K\'+I+\': $\'+a+\'</C>\');a=a.M(\',\',\'\')}j{$("#Y").S(\'<C>17 K 1h 1i 1n 1o 1t 1u 1p</C>\');a=0}G+=2w(a);G=n u.p("o-r").s(G);$(\'#m\').1R();$("#m").S(\'<d>z t: $\'+G+\'</d>\');G=G.M(\',\',\'\');G=G.M(\',\',\'\');G=G.M(\',\',\'\');G=2w(G)}$("#2i").2h("2n","2v")}j{b 2A=Z.3w*12;b 2B=+2A+ +Z.3x;c=20-2B;f(c<0){$("#Y").S(\'<C>17 2F 2E 2C 2D 2f</C>\')}j{f(O==1){f(c<=h){b a=(h-c)*2G.38+h*1V.1e+h*1r.1s+36*18.15+l*W.39;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j f(c>=1L&&c<=B){b a=(B-c)*1V.1e+h*1r.1s+36*18.15+l*W.39;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j f(c>B&&c<1f){b a=(L-c)*1r.1s+36*18.15+l*W.39;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<C>z t: $\'+a+\'</C><A>\'}j f(c>L&&c<=F){b a=(F-c)*18.15+l*W.39;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j f(c>=1N&&c<1w){b a=(1m-c)*W.39;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j{b e=q.w(\'m\');e.y=\'<d>17 K 1h 1i 1n 1o 1t 1u 1p</d>\'}}j f(O==2){f(c<=h){b a=(h-c)*2I.2x+h*1S.J+h*1j.1k+36*19.1b+l*X.T;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j f(c>=1L&&c<=B){b a=(B-c)*1S.J+h*1j.1k+36*19.1b+l*X.T;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j f(c>B&&c<1f){b a=(L-c)*1j.1k+36*19.1b+l*X.T;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j f(c>L&&c<=F){b a=(F-c)*19.1b+l*X.T;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j f(c>=1N&&c<1w){b a=(1m-c)*X.T;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j{b e=q.w(\'m\');e.y=\'<d>17 K 1h 1i 1n 1o 1t 1u 1p</d>\'}}j f(O==3){f(c<=h){b a=(h-c)*2z.2H+h*1W.34+h*1C.24+36*1a.1d+l*N.R;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j f(c>=1L&&c<=B){b a=(B-c)*1W.34+h*1C.24+36*1a.1d+l*N.R;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j f(c>B&&c<1f){b a=(L-c)*1C.24+36*1a.1d+l*N.R;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j f(c>L&&c<=F){b a=(F-c)*1a.1d+l*N.R;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j f(c>=1N&&c<1w){b a=(1m-c)*N.R;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j{b e=q.w(\'m\');e.y=\'<d>17 K 1h 1i 1n 1o 1t 1u 1p</d>\'}}j f(O==4){f(c<=h){b a=(h-c)*2K.14+h*1T.1e+h*1l.11+36*16.13+l*P.Q;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j f(c>=1L&&c<=B){b a=(B-c)*1T.1e+h*1l.11+36*16.13+l*P.Q;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j f(c>B&&c<1f){b a=(L-c)*1l.11+36*16.13+l*P.Q;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j f(c>L&&c<=F){b a=(F-c)*16.13+l*P.Q;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j f(c>=1N&&c<1w){b a=(1m-c)*P.Q;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j{b e=q.w(\'m\');e.y=\'<d>17 K 1h 1i 1n 1o 1t 1u 1p</d>\'}}j{f(c<=h){b a=(h-c)*2J.23+h*1U.23+h*1y.1v+36*1c.J+l*U.V;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j f(c>=1L&&c<=B){b a=(B-c)*1U.23+h*1y.1v+36*1c.J+l*U.V;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j f(c>B&&c<1f){b a=(L-c)*1y.1v+36*1c.J+l*U.V;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j f(c>L&&c<=F){b a=(F-c)*1c.J+l*U.V;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j f(c>=1N&&c<1w){b a=(1m-c)*U.V;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j{b e=q.w(\'m\');e.y=\'<d>17 K 1h 1i 1n 1o 1t 1u 1p</d>\'}}}$("#2i").2h("2n","2v")}})});',62,234,'||||||||||res|var|resultMonth|h2|result|if||60||else||72|result1|new|en|NumberFormat|document|US|format|Costs|Intl|toFixed|getElementById|option|innerHTML|Total|br|120|h3|value|outresult|216|totalres|select|count|44|Child|180|replace|2935|annual|3360|08|74|append|70|4585|47|2091|2554|result2|out||||07||05|2074|Your|1234|1541|1792|48|2892|62|56|181|val4|Is|Too|840|02|1156|288|Old|To|You|event|662|49|Rely|On|40|289|val11|1645|val0|val00|calcmorekids|987|val1|val2|val22|val33|val3|function|of|sum|61|Raising|217|span|required|nowMonth|empty|727|1004|1433|571|857|length|outKeys|now|nowAllres|parentNode|styleadd|||for|click|target|strr|check|JSON|checkout|lengthout|keys|nowYear|born|div|css|result4|teg|deleter|addchild|class|display|form_kids|form|name|disabled|selected|search|Object|block|Number|96|margin|575|yearinmonth|allage|not|yet|is|child|372|89|484|1000|684|butchild|Year|style|family|top|year|Open|prop|pstyle|2017|1993|Sans|ready|December|className|true|October|month|March||April||4px|||February|right|Month|font|May|August|September|January|July|5px|delete|June|November|fields|removeChild|stringify|decodeURI|serialize|false|result3|Date|getFullYear|year1|month1|let|43|getMonth|return|parse|hasAttribute|alert|preventDefault|getElementsByTagName|Please|calc|fill|all|in'.split('|'),0,{}))
 
 </script>
-
-
-
 
 <style type="text/css">
   .kids-content{
@@ -557,7 +148,7 @@
   }
   h3{
     margin-bottom: 5px;
-    margin-top: 5px;
+    margin-top: 15px;
     font-family: "Open Sans";
   }
   a{
@@ -570,11 +161,13 @@
   *{
     font-family: "Open Sans";
   }
-
-
-
+  #result4{
+    display: none;
+  }
 
 </style>
+
+<!-- end of calculator -->
 
 
 </body>
