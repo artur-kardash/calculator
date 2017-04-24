@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <meta charset="utf-8">
+       <title>Raising Kids Calculator</title>
+    </head>
+    <body>
+      
+
+<div class="steps-content">
+<h2 class="title">Lifetime Earnings<br> Calculator</h2>
+  <div class="step">
+      <form id="initial-form" data-form-processed="true">
+        <label>Age:</label>
+        <input type="tel" pattern="[0-9]*" name="age" id="input_age" class="number_format" placeholder="">
+        <label>Annual Income:</label>
+        <input type="tel" pattern="[0-9]*" onkeyup="myFunction()" name="initial_income" id="input_annual" class="number_format" placeholder="">
+        <button class="stbutton" type="button"><a class="calculate gtmCalcWorth01" style="margin-bottom: 5px;" id="calculate-btn" onClick="calculation()" >
+        Tell Me What I'm Worth </a></button>
+      </form>
+  </div>
+  <div id="res"></div>
+  <div id="earning"></div>
+  <div id="call">
+  <center><br>Expenses from today until your children leave home (at age 24)</center>
+  <center><br>Call to action - Lorem ipsum dolor sit amet et delectus</center>
+  <center><a href="http://test.com" class="add" style="text-align: center; color:#000;" >www.test.com</a></center><br>
+
+  </div>
+  <h3 class="add" style="text-align: center;"></h3> <!-- any text -->
+  <center><a href="http://test.com" class="add" style="text-align: center; color:#000;" ></a></center> <!-- any link -->
+
+</div>
+<script type="text/javascript">
+  function myFunction(){
+      var x = document.getElementById("input_annual").value;
+   
+      x = x.replace(",","");
+      x = x.replace(",","");
+      x = x.replace(",","");
+      x = x.replace(",","");
+      x = new Intl.NumberFormat("en-US").format(x);
+      document.getElementById('input_annual').value = x;
+  }
+
+  var t = 1;
+  var age_ritire = 65;
+  var input_raise_rate = 3; 
+  var years_to_pension = '';
+  var age = '';
+  var input_annual = '';
+  var sum = 0;
+  var lifetime_earnings = '';
+
+  function calculation()
+  {
+    sum = 0;
+    age = document.getElementById("input_age").value;
+    input_annual = document.getElementById("input_annual").value;
+    input_annual = input_annual.replace(',','');
+    input_annual = input_annual.replace(',','');
+    input_annual = input_annual.replace(',','');
+    input_annual = input_annual.replace(',','');
+
+    if(age.length == 0 || input_annual.length == 0){
+        var result = document.getElementById('res');
+        result.innerHTML = '<h3>Please fill in the fields.</h3>';
+    }else if(age > 64){
+        var result = document.getElementById('res');
+        result.innerHTML = '<h3>You have already reached the age of retirement</h3>';
+    }else{
+       years_to_pension = age_ritire - age;
+       for(var i = t; i<years_to_pension; i++){
+       sum += Math.pow((1+input_raise_rate/100), (years_to_pension-i));
+       }
+        lifetime_earnings = input_annual * sum;
+        lifetime_earnings = (lifetime_earnings).toFixed(0);
+        lifetime_earnings = +lifetime_earnings + +input_annual;
+        lifetime_earnings = parseFloat(lifetime_earnings);
+        lifetime_earnings = (lifetime_earnings).toFixed(0);
+        lifetime_earnings = new Intl.NumberFormat("en-US").format(lifetime_earnings);
+        var result = document.getElementById('res');
+        var earning = document.getElementById('earning');
+        input_annual = new Intl.NumberFormat("en-US").format(input_annual);
+        result.innerHTML = '<h2 class="h">If you make<br> '+'<span class="dollar">$</span>'+'<div id="out"><a href="#" onClick="annual()" id="annual">'+input_annual+'</a></div>'+'/year<br> '+'until you’re'+' '+'<div id="retir"><a href="#" onClick="retirement()" id="maxage" class="maxage"> '+age_ritire+' </a></div>'+' '+'that’s<br> $'+lifetime_earnings+'</h2>';
+        lifetime_earnings = "";
+        sum = "";
+    }
+        document.getElementById("call").style.cssText="display:block;";
+
+  }
+
+  function annual()
+  {
+    sum = 0;
+    var ahref = document.getElementById('out');
+    var elem=document.getElementById('annual');
+    elem.parentNode.removeChild(elem);
+    ahref.innerHTML = '<input id="inputout" class="annual" type="number" autofocus value="'+input_annual+'">';
+    inputout.onblur = function() {
+    input_annual = document.getElementById("inputout").value;
+      if(age.length == 0 || input_annual.length == 0){ 
+        var result = document.getElementById('res');
+        result.innerHTML = '<h3>Please fill in the fields.</h3>';
+      }else if(age > 64){
+        var result = document.getElementById('res');
+        result.innerHTML = '<h3>You have already reached the age of retirement</h3>';
+      }else{
+       years_to_pension = age_ritire - age;
+      for(var i = t; i<years_to_pension; i++){
+        sum += Math.pow((1+input_raise_rate/100), (years_to_pension-i));
+      }
+        lifetime_earnings = input_annual * sum;
+        lifetime_earnings = (lifetime_earnings).toFixed(0);
+        lifetime_earnings = +lifetime_earnings + +input_annual;
+        lifetime_earnings = parseFloat(lifetime_earnings);
+        lifetime_earnings = (lifetime_earnings).toFixed(0);
+        lifetime_earnings = new Intl.NumberFormat("en-US").format(lifetime_earnings);
+        input_annual = new Intl.NumberFormat("en-US").format(input_annual);
+        var result = document.getElementById('res');
+        var earning = document.getElementById('earning');
+        result.innerHTML = '<h2 class="h">If you make<br> '+'<span class="dollar">$</span>'+'<div id="out"><a href="#" onClick="annual()" id="annual">'+input_annual+'</a></div>'+'/year<br> '+'until you’re'+' '+'<div id="retir"><a href="#" onClick="retirement()" id="maxage" class="maxage"> ' + age_ritire + ' </a></div>'+' '+'that’s<br> $'+lifetime_earnings+'</h2>';
+        lifetime_earnings = "";
+        
+
+       }      
+    }
+       document.getElementById("call").style.cssText="display:block;";
+   
+  }
+
+  function retirement()
+  {
+    sum = 0;
+    var ahref = document.getElementById('retir');
+    var elem=document.getElementById('maxage');
+    elem.parentNode.removeChild(elem);
+    ahref.innerHTML = '<input id="inputage" class="maxage" autofocus type="number" value="'+age_ritire+'">';
+    inputage.onblur = function() {
+    age_ritire = document.getElementById("inputage").value;
+          if(age.length == 0 || age_ritire.length == 0){ 
+            var result = document.getElementById('res');
+            result.innerHTML = '<h3>Please fill in the fields.</h3>';
+          }else if(age > 64){
+            var result = document.getElementById('res');
+            result.innerHTML = '<h3>You have already reached the age of retirement</h3>';
+          }else{
+           years_to_pension = age_ritire - age;
+          for(var i = t; i<years_to_pension; i++){
+            sum += Math.pow((1+input_raise_rate/100), (years_to_pension-i));
+          }
+        input_annual = input_annual.replace(',','');
+        input_annual = input_annual.replace(',','');
+        input_annual = input_annual.replace(',','');
+        input_annual = input_annual.replace(',','');
+
+        lifetime_earnings = input_annual * sum;
+        lifetime_earnings = (lifetime_earnings).toFixed(0);
+        lifetime_earnings = +lifetime_earnings + +input_annual;
+        lifetime_earnings = parseFloat(lifetime_earnings);
+        lifetime_earnings = (lifetime_earnings).toFixed(0);
+        lifetime_earnings = new Intl.NumberFormat("en-US").format(lifetime_earnings);
+        input_annual = new Intl.NumberFormat("en-US").format(input_annual);
+        var result = document.getElementById('res');
+        var earning = document.getElementById('earning');
+        result.innerHTML = '<h2 class="h">If you make<br> '+'<span class="dollar">$</span>'+'<div id="out"><a href="#" onClick="annual()" id="annual">' + input_annual + '</a></div>'+'/year<br> '+'until you’re'+' '+'<div id="retir"><a href="#" onClick="retirement()" id="maxage" class="maxage"> '+ age_ritire +' </a></div>'+'   '+'that’s<br> $' + lifetime_earnings + '</h2>';
+        lifetime_earnings = "";
+
+       }      
+    }
+         document.getElementById("call").style.cssText="display:block";
+      
+
+  }
+</script>
+<style type="text/css">
+.title{
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+}
+.step{
+  margin:0 auto;
+  width: 160px;
+}
+.calculate{
+  font-family: "Open Sans", sans-serif;
+  color: #fff;
+  cursor: pointer;
+}
+.res{
+  display: inline;
+}
+#res{
+  font-family: "Open Sans", sans-serif;
+  text-align: center;
+}
+.h{
+  display: inline;
+}
+#out{
+display: inline;
+
+font-family: "Open Sans", sans-serif;
+font-size: 30px;
+}
+
+#retir{
+  display: inline;
+  font-family: "Open Sans", sans-serif;
+  font-size: 30px;
+}
+#annual{
+ color: #7ccb4a;
+}
+#maxage{
+  color: #7ccb4a; 
+}
+input[type="number"]{
+  border-bottom: 1px solid #7ccb4a;
+  border-top: 0px;
+  border-right: 0px;
+  border-left: 0px;
+  width: 100px;
+}
+
+input #inputout:focus{
+  border-bottom: 1px solid #7ccb4a;
+  border-top: 0px;
+  border-right: 0px;
+  border-left: 0px;
+}
+
+input #inputage:focus{
+  border-bottom: 1px solid #7ccb4a;
+  border-top: 0px;
+  border-right: 0px;
+  border-left: 0px;
+}
+
+.dollar{
+  color: #7ccb4a;
+  font-family: "Open Sans", sans-serif;; 
+  font-size: 25px;
+}
+#initial-form{
+  border-radius: 4px;
+  text-align: center;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 160px;
+  height: 180px;
+}
+.steps-content{
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  width: 320px;
+  background-color: #ffffff;
+  border: 1px solid #57ad68;
+  border-radius: 15px;
+  padding-bottom: 20px;
+}
+/*.stbutton{
+  padding-bottom: 0px;
+  border-radius: 40px;
+  background-color: #57ad68;
+  height: 33px;
+  margin-top: 10px;
+  border: 0;
+}*/
+.stbutton {
+   padding-bottom: 0px;
+   border-radius: 40px;
+   background-color: #57ad68 ;
+   height: 33px;
+   margin-top: 10px;
+   border: 0;
+   font-size: 12px;
+}
+
+input{
+  box-shadow: 0 0 7px rgba(0,0,0,0.3);
+  font-family: "Open Sans", sans-serif;
+  height: 25px;
+  margin-top: 10px;
+  width: 100%;
+}
+/*label{
+  font-family: "Open Sans", sans-serif;
+}*/
+label {
+   margin-bottom: 5px;
+   font-family: "Open Sans", sans-serif;
+}
+.stbutton:hover{
+  color: #55b27c;
+}
+button:hover{
+  background-color: #137c21; 
+}
+#earning{
+   font-family: "Open Sans", sans-serif;
+}
+.add{
+   font-family: "Open Sans", sans-serif;
+}
+#input_age {
+   margin-bottom: 10px;
+}
+ #call{
+    display: none;
+  }
+</style>
+
+
+
+
+    </body>
+</html>
+
+

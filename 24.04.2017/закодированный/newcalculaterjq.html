@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8">
+ <script src="http://code.jquery.com/jquery-1.8.3.js"></script> <!-- this link needed -->
+ <title>Raising Kids Calculator</title>
+</head>
+<body>
+
+<!-- begin of calculator -->
+
+  <div class="kids-content">
+    <h2 style="text-align: center;">Raising Kids Calculator</h2>
+    <div class="kids">
+      <form id="form_kids" data-form-processed="true" action="#" name="fileinfo" method="POST">
+        <center><label style="font-family: 'Open Sans';">Family Annual Income:</label></center>
+        <center><select class="annual" style="margin-bottom: 10px; margin-top: 5px;" required name="annual">
+          <option disabled selected value="">Select value</option>
+          <option value="1">less than $80,000</option>
+          <option value="2">$80,000-$100,000</option>
+          <option value="3">$100,000-$140,000</option>
+          <option value="4">$140,000-$200,000</option>
+          <option value="5">more than $200,000</option>
+        </select></center>
+
+        <label style="font-family: 'Open Sans';">Date Of Birth of Your child:</label><br>
+        <div id="addchild">
+          <span style="font-family: 'Open Sans';">Child 1: </span>
+        <select style="font-family: 'Open Sans';" class="month" required name="month1">
+          <option disabled selected value="">Month</option>
+          <option value="1">January</option>
+          <option value="2">February</option>
+          <option value="3">March</option>
+          <option value="4">April</option>
+          <option value="5">May</option>
+          <option value="6">June</option>
+          <option value="7">July</option>
+          <option value="8">August</option>
+          <option value="9">September</option>
+          <option value="10">October</option>
+          <option value="11">November</option>
+          <option value="12">December</option>
+        </select>
+          <select class="year" required name="year1">
+            <option disabled selected value="">Year</option>
+            <script type="text/javascript">
+            for (var i = 2017; i >= 1993; i--) {
+              document.write('<option value="'+i+'">'+i+'</option>');   
+            }
+          </script>
+        </select>
+       
+      </div>
+      <center><button class="butchild" type="button"><a class="addchild">+ Add another child</a></button></center>
+      <input class="sub calc" type="submit"  value="Calculate" />
+    </form>
+  </div>
+  <h3 style="text-align: center;"></h3> <!-- any text -->
+  <center><a href="http://test.com" style="text-align: center; color:#000;" ></a></center> <!-- any link -->
+  <div></div>
+  <div id="result1"></div>
+  <div id="result2"></div>
+  <div id="result3"></div>
+  <div id="result4">
+  <center><br>Expenses from today until your children leave home (at age 24)</center>
+  <center><br>Call to action - Lorem ipsum dolor sit amet et delectus</center>
+  <center><a href="http://test.com" class="add" style="text-align: center; color:#000;" >www.test.com</a></center><br>
+
+
+  </div>
+</div>
+<script type="text/javascript">
+eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--){d[e(c)]=k[c]||e(c)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('$(q).2X(1I(){$("H").2S(\'1P\',30);b I=1;b H;$(\'.2L\').26(1I(){b 22=\'2N="2y-2P: 3j; 2y-3b: 37; 3d-2O: 2R 2W;"\';I++;25(b i=2U;i>=2V;i--){H+=\'<x D="\'+i+\'">\'+i+\'</x>\'}b 2j=\'<2g 2m="3k 2T"><A><1O \'+22+\'>K \'+I+\': </1O><H \'+22+\' 1P 2q="32\'+I+\'">\'+\'<x 2r 2s D="">3c</x>\'+\'<x D="1">3h</x>\'+\'<x D="2">3a</x>\'+\'<x D="3">33</x>\'+\'<x D="4">35</x>\'+\'<x D="5">3e</x>\'+\'<x D="6">3l</x>\'+\'<x D="7">3i</x>\'+\'<x D="8">3f</x>\'+\'<x D="9">3g</x>\'+\'<x D="10">31</x>\'+\'<x D="11">3m</x>\'+\'<x D="12">2Y</x>\'+\'</H>\'+\'<H 1P 2q="2Q\'+I+\'"><x 2r 2s D="">2M</x>\'+H+\'</H>\'+\'<1O 2m="2k"> - <1O></2g>\';$("#2l").S(2j)});$("#2l").26(1I(1q){f(1q.27.2Z==\'2k\'){1q.27.21.21.3o(1q.27.21);I--}});$(\'.3I\').26(1I(1q){1q.3F();b H=2o.3G(\'H\');25(b k=0;k<H.1X;k++){f(H[k].3D("1P")){f(H[k].D==""){3E("3H 3J 3L 3K 3n");3B 3s}}}b G=0;$(\'#m\').1R();$(\'#Y\').1R();$(\'#3t\').1R();b I=0;b 2p=$("#2o").3r();b 2t=2p;b 28=\'{"\'+3q(2t).M(/"/g,\'\\\\"\').M(/&/g,\'","\').M(/=/g,\'":"\')+\'"}\';b Z=2a.3C(28);b 29=2a.3p(Z);b 2b=29.1X;b 2c=2u.2d(Z).1X;b O=Z.O;b 1Z=n 3u();2e=1Z.3v();1Q=1Z.3A();1Q=1Q+1;b 20=2e*12+1Q;f(2b>3z){b 1Y=2u.2d(Z);b 1K=0;25(3y i=1;i<=(2c-1);i++){f(i%2==0){1K+=+Z[1Y[i]]*12}j{1K+=+Z[1Y[i]]}f(i==2||i==4||i==6||i==8||i==10||i==12||i==14){b E=20-1K;f(E<0){$("#Y").S(\'<C>17 2F 2E 2C 2D 2f</C>\')}j{1K=0;f(O==1){b 1A=2G.38;b 1z=h*1V.1e+h*1r.1s+36*18.15+l*W.39;b 1x=1V.1e;b 1D=h*1r.1s+36*18.15+l*W.39;b 1F=1r.1s;b 1E=36*18.15+l*W.39;b 1G=18.15;b 1H=l*W.39;b 1g=W.39;1B()}j f(O==2){b 1A=2I.2x;b 1z=h*1S.J+h*1j.1k+36*19.1b+l*X.T;b 1x=1S.J;b 1D=h*1j.1k+36*19.1b+l*X.T;b 1F=1j.1k;b 1E=36*19.1b+l*X.T;b 1G=19.1b;b 1H=l*X.T;b 1g=X.T;1B()}j f(O==3){b 1A=2z.2H;b 1z=h*1W.34+h*1C.24+36*1a.1d+l*N.R;b 1x=1W.34;b 1D=h*1C.24+36*1a.1d+l*N.R;b 1F=1C.24;b 1E=36*1a.1d+l*N.R;b 1G=1a.1d;b 1H=l*N.R;b 1g=N.R;1B()}j f(O==4){b 1A=2K.14;b 1z=h*1T.1e+h*1l.11+36*16.13+l*P.Q;b 1x=1T.1e;b 1D=h*1l.11+36*16.13+l*P.Q;b 1F=1l.11;b 1E=36*16.13+l*P.Q;b 1G=16.13;b 1H=l*P.Q;b 1g=P.Q;1B()}j{b 1A=2J.23;b 1z=h*1U.23+h*1y.1v+36*1c.J+l*U.V;b 1x=1U.23;b 1D=h*1y.1v+36*1c.J+l*U.V;b 1F=1y.1v;b 1E=36*1c.J+l*U.V;b 1G=1c.J;b 1H=l*U.V;b 1g=U.V;1B()}}}}1I 1B(){I++;f(E<=h){b a=(h-E)*1A+1z;a=(a).v(0);a=n u.p("o-r").s(a);$("#Y").S(\'<C>t 1J 1M K\'+I+\': $\'+a+\'</C>\');a=a.M(\',\',\'\')}j f(E>h&&E<=B){b a=(B-E)*1x+1D;a=(a).v(0);a=n u.p("o-r").s(a);$("#Y").S(\'<C>t 1J 1M K\'+I+\': $\'+a+\'</C>\');a=a.M(\',\',\'\')}j f(E>B&&E<1f){b a=(L-E)*1F+1E;a=(a).v(0);a=n u.p("o-r").s(a);$("#Y").S(\'<C>t 1J 1M K\'+I+\': $\'+a+\'</C>\');a=a.M(\',\',\'\')}j f(E>=1f&&E<=F){b a=(F-E)*1G+1H;a=(a).v(0);a=n u.p("o-r").s(a);$("#Y").S(\'<C>t 1J 1M K\'+I+\': $\'+a+\'</C>\');a=a.M(\',\',\'\')}j f(E>F&&E<1w){b a=(1m-E)*1g;a=(a).v(0);a=n u.p("o-r").s(a);$("#Y").S(\'<C>t 1J 1M K\'+I+\': $\'+a+\'</C>\');a=a.M(\',\',\'\')}j{$("#Y").S(\'<C>17 K 1h 1i 1n 1o 1t 1u 1p</C>\');a=0}G+=2w(a);G=n u.p("o-r").s(G);$(\'#m\').1R();$("#m").S(\'<d>z t: $\'+G+\'</d>\');G=G.M(\',\',\'\');G=G.M(\',\',\'\');G=G.M(\',\',\'\');G=2w(G)}$("#2i").2h("2n","2v")}j{b 2A=Z.3w*12;b 2B=+2A+ +Z.3x;c=20-2B;f(c<0){$("#Y").S(\'<C>17 2F 2E 2C 2D 2f</C>\')}j{f(O==1){f(c<=h){b a=(h-c)*2G.38+h*1V.1e+h*1r.1s+36*18.15+l*W.39;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j f(c>=1L&&c<=B){b a=(B-c)*1V.1e+h*1r.1s+36*18.15+l*W.39;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j f(c>B&&c<1f){b a=(L-c)*1r.1s+36*18.15+l*W.39;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<C>z t: $\'+a+\'</C><A>\'}j f(c>L&&c<=F){b a=(F-c)*18.15+l*W.39;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j f(c>=1N&&c<1w){b a=(1m-c)*W.39;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j{b e=q.w(\'m\');e.y=\'<d>17 K 1h 1i 1n 1o 1t 1u 1p</d>\'}}j f(O==2){f(c<=h){b a=(h-c)*2I.2x+h*1S.J+h*1j.1k+36*19.1b+l*X.T;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j f(c>=1L&&c<=B){b a=(B-c)*1S.J+h*1j.1k+36*19.1b+l*X.T;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j f(c>B&&c<1f){b a=(L-c)*1j.1k+36*19.1b+l*X.T;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j f(c>L&&c<=F){b a=(F-c)*19.1b+l*X.T;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j f(c>=1N&&c<1w){b a=(1m-c)*X.T;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j{b e=q.w(\'m\');e.y=\'<d>17 K 1h 1i 1n 1o 1t 1u 1p</d>\'}}j f(O==3){f(c<=h){b a=(h-c)*2z.2H+h*1W.34+h*1C.24+36*1a.1d+l*N.R;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j f(c>=1L&&c<=B){b a=(B-c)*1W.34+h*1C.24+36*1a.1d+l*N.R;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j f(c>B&&c<1f){b a=(L-c)*1C.24+36*1a.1d+l*N.R;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j f(c>L&&c<=F){b a=(F-c)*1a.1d+l*N.R;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j f(c>=1N&&c<1w){b a=(1m-c)*N.R;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j{b e=q.w(\'m\');e.y=\'<d>17 K 1h 1i 1n 1o 1t 1u 1p</d>\'}}j f(O==4){f(c<=h){b a=(h-c)*2K.14+h*1T.1e+h*1l.11+36*16.13+l*P.Q;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j f(c>=1L&&c<=B){b a=(B-c)*1T.1e+h*1l.11+36*16.13+l*P.Q;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j f(c>B&&c<1f){b a=(L-c)*1l.11+36*16.13+l*P.Q;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j f(c>L&&c<=F){b a=(F-c)*16.13+l*P.Q;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j f(c>=1N&&c<1w){b a=(1m-c)*P.Q;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j{b e=q.w(\'m\');e.y=\'<d>17 K 1h 1i 1n 1o 1t 1u 1p</d>\'}}j{f(c<=h){b a=(h-c)*2J.23+h*1U.23+h*1y.1v+36*1c.J+l*U.V;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j f(c>=1L&&c<=B){b a=(B-c)*1U.23+h*1y.1v+36*1c.J+l*U.V;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j f(c>B&&c<1f){b a=(L-c)*1y.1v+36*1c.J+l*U.V;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j f(c>L&&c<=F){b a=(F-c)*1c.J+l*U.V;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j f(c>=1N&&c<1w){b a=(1m-c)*U.V;a=(a).v(0);a=n u.p("o-r").s(a);b e=q.w(\'m\');e.y=\'<d>z t: $\'+a+\'</d><A>\'}j{b e=q.w(\'m\');e.y=\'<d>17 K 1h 1i 1n 1o 1t 1u 1p</d>\'}}}$("#2i").2h("2n","2v")}})});',62,234,'||||||||||res|var|resultMonth|h2|result|if||60||else||72|result1|new|en|NumberFormat|document|US|format|Costs|Intl|toFixed|getElementById|option|innerHTML|Total|br|120|h3|value|outresult|216|totalres|select|count|44|Child|180|replace|2935|annual|3360|08|74|append|70|4585|47|2091|2554|result2|out||||07||05|2074|Your|1234|1541|1792|48|2892|62|56|181|val4|Is|Too|840|02|1156|288|Old|To|You|event|662|49|Rely|On|40|289|val11|1645|val0|val00|calcmorekids|987|val1|val2|val22|val33|val3|function|of|sum|61|Raising|217|span|required|nowMonth|empty|727|1004|1433|571|857|length|outKeys|now|nowAllres|parentNode|styleadd|||for|click|target|strr|check|JSON|checkout|lengthout|keys|nowYear|born|div|css|result4|teg|deleter|addchild|class|display|form_kids|form|name|disabled|selected|search|Object|block|Number|96|margin|575|yearinmonth|allage|not|yet|is|child|372|89|484|1000|684|butchild|Year|style|family|top|year|Open|prop|pstyle|2017|1993|Sans|ready|December|className|true|October|month|March||April||4px|||February|right|Month|font|May|August|September|January|July|5px|delete|June|November|fields|removeChild|stringify|decodeURI|serialize|false|result3|Date|getFullYear|year1|month1|let|43|getMonth|return|parse|hasAttribute|alert|preventDefault|getElementsByTagName|Please|calc|fill|all|in'.split('|'),0,{}))
+
+</script>
+
+<style type="text/css">
+  .kids-content{
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    width: 320px;
+    background-color: #ffffff;
+    border: 1px solid #57ad68;
+    border-radius: 15px;
+    padding-bottom: 20px;
+  }
+
+  input{
+    width: 100px;
+
+  }
+
+  button{
+    margin-top: 5px;
+  }
+
+  .kids{
+    text-align: center;
+  }
+
+  #result1{
+    text-align: center;
+  }
+
+  #result2{
+    margin-top: -20px;
+    text-align: center;
+  }
+
+  #result3{
+    text-align: center;
+  }
+  .sub{
+    font-family: "Open Sans", sans-serif;
+    color: #fff;
+    cursor: pointer;
+    width: 70%;
+    padding-bottom: 0px;
+    border-radius: 10px;
+    background-color: #57ad68 ;
+    height: 33px;
+    margin-top: 10px;
+    border: 0;
+    font-size: 12px;
+  }
+
+  .sub:hover{
+    background-color: #137c21;
+  }
+  .butchild{
+    border: none;
+    background-color: #ffffff;
+    cursor: pointer;
+  }
+
+  #addchild{
+    margin-top: 5px;
+  }
+  .delete{
+    margin-top: -10px;
+    cursor: pointer;
+  }
+  .calc{
+      margin-bottom: 5px;
+      font-size: 20px;
+  }
+  h2{
+    font-family: "Open Sans";
+  }
+  h3{
+    margin-bottom: 5px;
+    margin-top: 15px;
+    font-family: "Open Sans";
+  }
+  a{
+    font-family: "Open Sans"
+  }
+
+  .delstyle{
+    cursor: pointer;
+  }
+  *{
+    font-family: "Open Sans";
+  }
+  #result4{
+    display: none;
+  }
+
+</style>
+
+<!-- end of calculator -->
+
+
+</body>
+</html>
+
